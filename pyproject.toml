@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "contract-diff-analyzer"
+version = "1.0.0"
+description = "Breaking-change analysis of a documented OpenAPI subset"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+contract-diff-analyzer = "contract_diff_analyzer:entrypoint"
+
+[tool.setuptools.packages.find]
+include = ["contract_diff_analyzer*"]
