@@ -36,3 +36,13 @@ Business algorithms live in `contract_diff_analyzer/core.py`; `contract_diff_ana
 Analyzes operation removal, parameters, request-body requirements, response removal and component property/type/enum changes. Unresolved references and composition schemas are reported as unsupported instead of assumed safe.
 
 This project demonstrates implemented engineering practices. It does not claim production deployment history or external certifications.
+
+## Reviewable Markdown reports
+
+Generate a Markdown compatibility report for pull request review, including breaking findings and unsupported schema features. Existing JSON output and CI gating remain available.
+
+```sh
+python -m contract_diff_analyzer compare examples/before.json examples/after.json --format markdown
+```
+
+Create the named input snapshots, databases or plan files first using the existing commands above.

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "contract-diff-analyzer"
-version = "1.0.0"
+version = "1.1.0"
 description = "Breaking-change analysis of a documented OpenAPI subset"
 requires-python = ">=3.11"
 dependencies = []

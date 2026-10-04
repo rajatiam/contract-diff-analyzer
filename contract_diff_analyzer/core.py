@@ -180,3 +180,35 @@ def compare_schema(old, new, location, emit, direction):
             )
     if "items" in old and "items" in new:
         compare_schema(old["items"], new["items"], location + "[]", emit, direction)
+
+
+def markdown(report):
+    from html import escape
+
+    def safe(value):
+        return escape(str(value)).replace("|", r"\|").replace("\n", " ")
+
+    lines = [
+        "# API compatibility report",
+        "",
+        f"Breaking findings: {report['breaking']}",
+        f"Fully analyzed: {report['fully_analyzed']}",
+        "",
+        "| Kind | Location | Finding |",
+        "| --- | --- | --- |",
+    ]
+    for change in report["changes"]:
+        lines.append(
+            "| "
+            + safe(change["kind"])
+            + " | "
+            + safe(change["location"])
+            + " | "
+            + safe(change["message"])
+            + " |"
+        )
+    for item in report["unsupported"]:
+        lines.append(
+            "| Review | " + safe(item["location"]) + " | " + safe(item["reason"]) + " |"
+        )
+    return "\n".join(lines) + "\n"
